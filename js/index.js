@@ -1,4 +1,4 @@
-var game = {
+var game = { 
     // Counts the level of the game
     level: 0,
     // Stores the four colors
@@ -53,61 +53,15 @@ var game = {
       }
       else
         // After showing the entire pattern, stop executing the inner-function
-        clearInterval(patternscall);
+        clearInterval(patternscall); 
       
     }, 1000);
     
     clearPlayer();
   }
-  
-
-  /* function playerPatternCheck(id){   
    
-    
-    if(game.playerPattern[game.playerPattern.length-1] !== game.computerPattern[game.computerPattern.length - 1]){ 
-    //  console.log("Hey"); 
-      if(game.strictMode)
-        alert("Game Over! Try again!!"); 
-      else{
-      //  console.log("Shiva");  
-        alert("Wrong move! Please follow the pattern"); 
-        showPatterns(); } 
-    /*  }
-      else{
-        alert("Good move");
-        if(game.playerPattern.length === game.computerPattern.length){ 
-          if(game.level === 20)
-          alert("Congrats!! You won");
-          else{
-            alert("Next Level");
-          //  addLevel();
-          }
-            
-          
-        }
-          
-        
-      }
-      }
-     */   
-     
-   // }
-  //}
- */
-  
-  playerPatternCheck(){
-    game.playerPattern.
-    
-  }
-  
-  
-// invoked by the player on clicking the buttons    
-    function addToPlayerPattern(id){     
-    console.log("Into it");  
-    game.playerPattern.push("#" + id);
-      if(game.playerPattern.length === )
-   // playerPatternCheck("#" + id);
-  }
+
+
 
 
 
@@ -125,6 +79,7 @@ var game = {
   
   function addLevel(){
     // incrementing the current level-count
+    //console.log("AddLevel");  
     game.level++;
     // Update and Display the current level to the player
     $("#level").html(game.level);
@@ -136,18 +91,46 @@ var game = {
   
   function newGame(){
    // Setting level equal to 0
+    console.log("shiva");
    game.level = 0;
     // Overwriting the array such that it has no generated patterns in it
    game.computerPattern = [];
-   // console.log("shiva");
+    
     // Incrementing the level
     addLevel();
   }
 
+  function playerPatternCheck(){
+  var a = game.playerPattern.toString();
+  var b = game.computerPattern.toString();
+  if(a === b){
+    alert("Good Move!");
+    addLevel();
+  }
+  else{
+    alert("Wrong Move! Try again");
+    showPatterns();  
+  }
+    
+}
+
+   
+   
+    
+    
+  
+  
+// invoked by the player on clicking the buttons    
+    function addToPlayerPattern(id){     
+    console.log("Into it");  
+    game.playerPattern.push("#" + id);
+      if(game.playerPattern.length <= game.computerPattern.length)
+        playerPatternCheck();  
+  }
 
 
 
 $(document).ready(function(){
-  
+  console.log("Hey I'm in");  
   newGame();
 });

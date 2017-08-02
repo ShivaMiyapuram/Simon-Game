@@ -8,20 +8,10 @@ var game = {
     // Stores the player's pattern
     playerPattern: [],
     // sounds for the game
-    
+
     // strict mode on/off
     strictMode: false, 
   };  
-
-
-  
-  
-  
-  
-  
- 
- 
-
 
  
   
@@ -31,6 +21,7 @@ var game = {
     $(id).addClass("animated shake");
     // Stop the animation after 300ms 
     setTimeout(function() { $(id).removeClass("animated shake") }, 300);
+
   }
   
   function clearPlayer(){
@@ -60,16 +51,8 @@ var game = {
     clearPlayer();
   }
    
-
-
-
-
-
-
-  
   function generatePatterns(){
     // computer generated patterns are pushed into computerPatterns array
-    
     game.computerPattern.push(game.colors[(Math.random()*3).toFixed()]);
     // console.log(game);
     // show the patterns to the player 
@@ -112,13 +95,7 @@ var game = {
     showPatterns();  
   }
     
-}
-
-   
-   
-    
-    
-  
+} 
   
 // invoked by the player on clicking the buttons    
     function addToPlayerPattern(id){     
@@ -129,8 +106,7 @@ var game = {
   }
 
 
-
 $(document).ready(function(){
-  console.log("Hey I'm in");  
+  //console.log("Hey I'm in");  
   newGame();
 });

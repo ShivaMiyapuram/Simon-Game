@@ -99,7 +99,8 @@ var game = {
   
 // invoked by the player on clicking the buttons    
     function addToPlayerPattern(id){     
-    console.log("Into it");  
+   // console.log("Into it");
+   // showEachUnitOfPattern(id);  
     game.playerPattern.push("#" + id);
       if(game.playerPattern.length <= game.computerPattern.length)
         playerPatternCheck();  

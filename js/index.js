@@ -7,22 +7,28 @@ var game = {
     computerPattern: [],
     // Stores the player's pattern
     playerPattern: [],
-    // sounds for the game
-
     // strict mode on/off
     strictMode: false, 
   };  
 
- 
-  
   function showEachUnitOfPattern(id){     
     // Target a component and add animated shake 
-   //  console.log(id);    
+   //  console.log(id);  
     $(id).addClass("animated shake");
     // Stop the animation after 300ms 
+    //sound(id);
+   switch(id) {
+    case "#blue":       $("#beep1")[0].play();
+                        break;
+    case "#red":        $("#beep2")[0].play();
+                        break;
+    case "#green":      $("#beep3")[0].play();
+                        break;  
+    case "#yellow":     $("#beep4")[0].play();
+                        break; 
+    }                                                      
     setTimeout(function() { $(id).removeClass("animated shake") }, 300);
-
-  }
+}
   
   function clearPlayer(){
     // clear all the player patterns
@@ -32,7 +38,7 @@ var game = {
   
   function showPatterns(){
     var i = 0;
-    console.log("shiva");  
+   // console.log("shiva");  
     // call the inner-function for every 600ms until the entire computer generated pattern is shown to the player
     var patternscall = setInterval(function(){
       // if i is less than the length of computer-generated patterns array
@@ -86,6 +92,8 @@ var game = {
   function playerPatternCheck(){
   var a = game.playerPattern.toString();
   var b = game.computerPattern.toString();
+  console.log('a: ' + a);
+  console.log('b'  + b);
   if(a === b){
     alert("Good Move!");
     addLevel();
@@ -99,11 +107,12 @@ var game = {
   
 // invoked by the player on clicking the buttons    
     function addToPlayerPattern(id){     
-   // console.log("Into it");
-   // showEachUnitOfPattern(id);  
+   // console.log("Into it"); 
     game.playerPattern.push("#" + id);
-      if(game.playerPattern.length <= game.computerPattern.length)
+      if(game.playerPattern.length === game.computerPattern.length){
         playerPatternCheck();  
+
+      }
   }
 
 

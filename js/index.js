@@ -94,29 +94,53 @@ var game = {
   var b = game.computerPattern.toString();
   console.log('a: ' + a);
   console.log('b'  + b);
-  if(a === b){
-    alert("Good Move!");
-    addLevel();
-  }
+  
+    if(a === b){
+        alert("Good Move!");
+        addLevel();
+    }
   else{
     alert("Wrong Move! Try again");
     showPatterns();  
+    }
   }
-    
-} 
   
 // invoked by the player on clicking the buttons    
     function addToPlayerPattern(id){     
    // console.log("Into it"); 
     game.playerPattern.push("#" + id);
+
+     $(id).addClass("animated shake");
+    console.log("animated shake");
+    // Stop the animation after 300ms 
+    //sound(id);
+   switch(id) {
+    case "#blue":       $("#beep1")[0].play();
+                        break;
+    case "#red":        $("#beep2")[0].play();
+                        break;
+    case "#green":      $("#beep3")[0].play();
+                        break;  
+    case "#yellow":     $("#beep4")[0].play();
+                        break; 
+    }                                                      
+    setTimeout(function() { $(id).removeClass("animated shake") }, 300);
+
+    //animateOnClick(id);
       if(game.playerPattern.length === game.computerPattern.length){
         playerPatternCheck();  
-
       }
   }
 
 
 $(document).ready(function(){
   //console.log("Hey I'm in");  
-  newGame();
+  $("#start").on("click", function(){
+    newGame();
+  });
+
+  $("#levelUp").on("click", function(){
+    addLevel();
+  });
+  
 });
